@@ -19,6 +19,9 @@ jobs:
       with:
         python-version: '3.14'
 
+    - name: Install ruff
+      run: pip install ruff
+
     - name: Run Linters
       run: ruff check .
 
