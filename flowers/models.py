@@ -5,7 +5,6 @@ from phonenumber_field.modelfields import PhoneNumberField
 
 class Event(models.Model):
     title = models.CharField("Название события", max_length=100)
-    slug = models.SlugField("Слуг для URL", unique=True)
 
     class Meta:
         verbose_name = "Событие"
