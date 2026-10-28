@@ -1,4 +1,5 @@
 Django==6.1 
-environs==15.2.0 
-django-phonenumber-field 
-phonenumbers
+django-phonenumber-field==9.*
+environs==15.2.*
+phonenumbers==9.*
+Pillow==13.*
