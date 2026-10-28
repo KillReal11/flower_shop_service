@@ -16,7 +16,7 @@ class Event(models.Model):
 
 class Bouquet(models.Model):
     title = models.CharField("Название букета", max_length=200)
-    slug = models.SlugField("Слуг для URL", unique=True)
+    slug = models.SlugField("URL-имя", unique=True)
     description = models.TextField("Описание")
     meaning = models.TextField("Смысл букета")
     price = models.DecimalField(
