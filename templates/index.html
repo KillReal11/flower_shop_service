@@ -9,9 +9,9 @@
           <a href="{% url 'index' %}"><img src="{% static 'img/logo.svg' %}" alt="logo" class="logo"></a>
           <nav>
             <ul class="menu ficc">
-              <li class="menu__item"><a href="#" class="menu__item_link">Каталог</a></li>
-              <li class="menu__item"><a href="#" class="menu__item_link">Рекомендации</a></li>
-              <li class="menu__item"><a href="#" class="menu__item_link">Контакты</a></li>
+              <li class="menu__item"><a href="{% url 'catalog' %}" class="menu__item_link">Каталог</a></li>
+              <li class="menu__item"><a href="{% url 'catalog' %}" class="menu__item_link">Рекомендации</a></li>
+              <li class="menu__item"><a href="{% url 'consultation' %}" class="menu__item_link">Контакты</a></li>
             </ul>
           </nav>
         </div>
@@ -23,7 +23,7 @@
           <div class="banner__block">
             <h1 class="banner__title">Мастерская цветов</h1>
             <p class="banner__text">Подберем для вас букет за два шага, который идеально подойдет под вашу ситуацию</p>
-            <button class="btn banner__btn">Подобрать букет</button>
+            <button class="btn banner__btn" onclick="location.href='{% url 'quiz' %}'">Подобрать букет</button>
           </div>
           <img src="{% static 'img/bannerImg.png' %}" alt="banner Img" class="banner__img">
         </div>
@@ -57,7 +57,7 @@
             </div>
           </div>
         </div>
-        <button class="btn recommended__btn">Показать всю коллекцию</button>
+        <button class="btn recommended__btn" onclick="location.href='{% url 'catalog' %}'">Показать всю коллекцию</button>
       </div>
     </div>
   </section>
