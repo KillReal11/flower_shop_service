@@ -18,6 +18,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from flowers import views
+
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('', views.index, name='index'),
+    path('card/', views.card),
+    path('catalog/', views.catalog, name='catalog'),
+    path('consultation/', views.consultation),
+    path('order/', views.order),
+    path('order-step/', views.order_step),
+    path('quiz/', views.quiz),
+    path('quiz-step/', views.quiz_step),
+    path('result/', views.result),
 ]
