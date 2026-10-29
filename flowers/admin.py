@@ -1,4 +1,5 @@
 from django.contrib import admin
+from django.utils.html import mark_safe
 
 from .models import (
     Bouquet,
@@ -24,6 +25,16 @@ class BouquetAdmin(admin.ModelAdmin):
     list_editable = ("is_recommended",)
     filter_horizontal = ("events",)
     prepopulated_fields = {"slug": ("title",)}
+    readonly_fields = ("image_preview",)
+
+    def image_preview(self, obj):
+        if obj.image:
+            return mark_safe(
+                f'<img src="{obj.image.url}" style="max-width: 200px; max-height: 200px;" />'
+            )
+        return "Нет фото"
+
+    image_preview.short_description = "Предпросмотр"
 
 
 @admin.register(BudgetInterval)
