@@ -29,7 +29,9 @@ class BouquetAdmin(admin.ModelAdmin):
 
     def image_preview(self, obj):
         if obj.image:
-            return mark_safe(f'<img src="{obj.image.url}" style="max-width: 200px; max-height: 200px;" />')
+            return mark_safe(
+                f'<img src="{obj.image.url}" style="max-width: 200px; max-height: 200px;" />'
+            )
         return "Нет фото"
 
     image_preview.short_description = "Предпросмотр"
