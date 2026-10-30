@@ -6,15 +6,22 @@
 		<div class="container">
 			<div class="quiz">
 				<div class="quiz__back ">
-					<a href="#" class="quiz__back_link fic"><img src="{% static 'img/arrow-left.svg' %}" alt="arrow-left" class="arrowLeft">
-					<span class="quiz__back_intro" onclick="location.href='{% url 'index' %}'">Назад</span></a>
+					<a href="{% url 'index' %}" class="quiz__back_link fic">
+            <img src="{% static 'img/arrow-left.svg' %}" alt="arrow-left" class="arrowLeft">
+					  <span class="quiz__back_intro">Назад</span>
+          </a>
 				</div>
 				<div class="quiz__block">
 					<h1 class="quiz__title">К какому событию нужен букет?</h1>
 					<div class="quiz__elems fic">
-						<button class="quiz__elem" onclick="location.href='{% url 'quiz_step' %}'">Свадьба</button>
-						<button class="quiz__elem" onclick="location.href='{% url 'quiz_step' %}'">День рождения</button>
-						<button class="quiz__elem" onclick="location.href='{% url 'quiz_step' %}'">Без повода</button>
+            <form method="post" action="{% url 'quiz' %}">
+              {% csrf_token %}
+              {% for event in events %}
+                <button class="quiz__elem" type="submit" name="event_id" value="{{ event.pk }}">
+                  {{ event.title }}
+                </button>
+              {% endfor %}
+            </form>
 					</div>
 					<div class="quiz__progress">
 						<div class="quiz__progress_step">
