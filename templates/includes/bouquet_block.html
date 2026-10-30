@@ -1,8 +1,8 @@
-<div class="recommended__block"
+<a class="recommended__block"
      style="background: url('{{ bouquet.image.url }}') no-repeat center bottom / cover;"
-     onclick="location.href='{% url 'card' bouquet.slug %}'">
+     href="{% url 'card' bouquet.slug %}">
   <div class="recommended__block_elems ficb">
     <span class="recommended__block_intro">{{ bouquet.title }}</span>
     <span class="recommended__block_price">{{ bouquet.price|floatformat:"0g" }} руб</span>
   </div>
-</div>
+</a>
