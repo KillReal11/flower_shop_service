@@ -1,19 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404, render
+
+from .models import Bouquet
 
 
 def index(request):
-    # будущий код
-    return render(request, "index.html")
+    bouquets = Bouquet.objects.filter(is_recommended=True).order_by("id")[:3]
+    return render(request, "index.html", {"bouquets": bouquets})
 
 
-def card(request):
-    # будущий код
-    return render(request, "card.html")
+def card(request, slug):
+    bouquet = get_object_or_404(Bouquet, slug=slug)
+    return render(request, "card.html", {"bouquet": bouquet})
 
 
 def catalog(request):
-    # будущий код
-    return render(request, "catalog.html")
+    bouquets = Bouquet.objects.order_by("id")
+    return render(request, "catalog.html", {"bouquets": bouquets})
 
 
 def consultation(request):

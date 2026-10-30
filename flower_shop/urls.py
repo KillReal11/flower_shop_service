@@ -25,7 +25,7 @@ from flowers import views
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", views.index, name="index"),
-    path("card/", views.card, name="card"),
+    path("card/<slug:slug>/", views.card, name="card"),
     path("catalog/", views.catalog, name="catalog"),
     path("consultation/", views.consultation, name="consultation"),
     path("order/", views.order, name="order"),
