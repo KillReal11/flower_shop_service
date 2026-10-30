@@ -30,9 +30,9 @@ urlpatterns = [
     path("consultation/", views.consultation, name="consultation"),
     path("order/", views.order, name="order"),
     path("order-step/", views.order_step, name="order_step"),
-    path("quiz/", views.quiz, name="quiz"),
-    path("quiz-step/", views.quiz_step, name="quiz_step"),
-    path("result/", views.result, name="result"),
+    path("quiz/", views.quiz_event, name="quiz"),
+    path("quiz-step/", views.quiz_budget, name="quiz_step"),
+    path("result/", views.quiz_result, name="result"),
 ]
 
 if settings.DEBUG:
