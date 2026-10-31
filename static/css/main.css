@@ -83,6 +83,8 @@ input::placeholder {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 9px;
 }
 
 .ficc {
@@ -188,25 +190,13 @@ height: 825px;*/
     align-items: end;
     width: 398px;
     height: 400px;
-    margin-right: 9px;
     color: inherit;
     text-decoration: none;
+    flex: 0 0 calc((100% - 18px) / 3);
 }
 
-.recommended__block:last-child {
-    margin-right: 0;
-}
-
-.recommended__block_first {
-    background: url('../img/recommendedBg1.jpg') no-repeat center bottom / cover;
-}
-
-.recommended__block_sec {
-    background: url('../img/recommendedBg2.jpg') no-repeat center bottom / cover;
-}
-
-.recommended__block_thr {
-    background: url('../img/recommendedBg3.jpg') no-repeat center bottom / cover;
+.is-hidden {
+    display: none;
 }
 
 .recommended__block_elems {
@@ -684,7 +674,7 @@ height: 825px;*/
     flex: 1 !important;
 }
 
-.order:not(.orderStep) > div:last-of-type {
+.order:not(.orderStep)>div:last-of-type {
     width: 100% !important;
     max-width: 450px !important;
     flex-shrink: 0 !important;
@@ -839,7 +829,8 @@ input[type=radio]:checked+label {
 
 /* Правая колонка (карточка букета) на шаге оплаты */
 .order.orderStep .result__items {
-    margin-top: 0 !important; /* Полностью обнуляем margin коллег */
+    margin-top: 0 !important;
+    /* Полностью обнуляем margin коллег */
     margin-right: 0 !important;
     width: 100% !important;
     max-width: 400px !important;
@@ -847,7 +838,9 @@ input[type=radio]:checked+label {
     box-sizing: border-box !important;
 }
 
-.order__img, .order_img, .result__items img {
+.order__img,
+.order_img,
+.result__items img {
     width: 100% !important;
     max-width: 450px !important;
     height: 500px !important;

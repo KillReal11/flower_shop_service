@@ -7,17 +7,20 @@
 			<div class="catalog">
 				<div class="title">Все букеты</div>
 				<div class="catalog__block">
-					<div class="recommended__elems ficb recommended__elems_first">
-						{% for bouquet in bouquets|slice:":3" %}
-							{% include "includes/bouquet_block.html" %}
+					<div class="recommended__elems ficb">
+						{% for bouquet in bouquets %}
+              {% if forloop.counter > 6 %}
+                {% include "includes/bouquet_block.html" with bouquet=bouquet hidden=True only %}
+              {% else %}
+                  {% include "includes/bouquet_block.html" with bouquet=bouquet only %}
+              {% endif %}
+            {% empty %}
+              <p>Скоро здесь появятся букеты</p>
 						{% endfor %}
 					</div>
-					<div class="recommended__elems ficb recommended__elems_sec">
-						{% for bouquet in bouquets|slice:"3:6" %}
-							{% include "includes/bouquet_block.html" %}
-						{% endfor %}
-					</div>
-					<button class="btn largeBtn catalog__btn">Показать ещё</button>
+          {% if bouquets|length > 6 %}
+            <button class="btn largeBtn catalog__btn" id="show-more">Показать ещё</button>
+          {% endif %}
 				</div>
 			</div>
 		</div>
@@ -25,3 +28,17 @@
 {% endblock %}
 
 {% block contacts %}{% endblock %}
+
+{% block extra_js %}
+  <script>
+		const btn = document.getElementById('show-more');
+    if (btn) {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.recommended__block.is-hidden')
+                .forEach(el => el.classList.remove('is-hidden'));
+            btn.remove();
+        });
+    }
+	</script>
+{% endblock %}
+

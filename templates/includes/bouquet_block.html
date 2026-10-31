@@ -1,4 +1,4 @@
-<a class="recommended__block"
+<a class="recommended__block {% if hidden %}is-hidden{% endif %}"
      style="background: url('{{ bouquet.image.url }}') no-repeat center bottom / cover;"
      href="{% url 'card' bouquet.slug %}">
   <div class="recommended__block_elems ficb">
