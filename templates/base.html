@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="{% static 'css/main.css' %}">	
   </head>
   <body>
+    {% for message in messages %}
+      <p style="color: red; font-weight: bold;">ТЕСТ: {{ message }}</p>
+    {% endfor %}
     {% block header %}
       <header id="header">
         <div class="container">
@@ -66,9 +69,15 @@
         <div class="container">
           <div class="consultation">
             <div class="title consultation__title">Оставьте заявку на консультацию</div>
-            <form action="#" class="consultation__form">
-              <input type="text" name="fname" class="consultation__form_input" placeholder="Введите Имя" required>
-              <input type="text" name="tel" class="consultation__form_input" placeholder="+ 7 (999) 000 00 00" required>
+
+            {% for message in messages %}
+              <p class="consultation__message">{{ message }}</p>
+            {% endfor %}
+
+            <form action="{% url 'consultation' %}" method="post" class="consultation__form">
+              {% csrf_token %}
+              <input type="text" name="client_name" class="consultation__form_input" placeholder="Введите Имя" required>
+              <input type="tel" name="client_phone" class="consultation__form_input" placeholder="+ 7 (999) 000 00 00" required>
               <button type="submit" class="consultation__form_btn">Отправить</button>
             </form>
           </div>
