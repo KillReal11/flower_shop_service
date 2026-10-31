@@ -3,6 +3,10 @@ from django.db import models
 from phonenumber_field.modelfields import PhoneNumberField
 
 
+def _split_items(text):
+    return [part.strip() for part in text.split(",") if part.strip()]
+
+
 class Event(models.Model):
     title = models.CharField("Название события", max_length=100)
 
@@ -45,6 +49,14 @@ class Bouquet(models.Model):
 
     def __str__(self):
         return self.title
+
+    @property
+    def composition_items(self):
+        return _split_items(self.composition)
+
+    @property
+    def size_items(self):
+        return _split_items(self.size)
 
 
 class BudgetInterval(models.Model):
