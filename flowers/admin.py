@@ -1,14 +1,7 @@
 from django.contrib import admin
 from django.utils.html import mark_safe
 
-from .models import (
-    Bouquet,
-    BudgetInterval,
-    ConsultationRequest,
-    Event,
-    Order,
-    PromoCode,
-)
+from .models import Bouquet, BudgetInterval, ConsultationRequest, Event, Order, PromoCode
 
 
 @admin.register(Event)
