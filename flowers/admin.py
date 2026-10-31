@@ -62,6 +62,7 @@ class OrderAdmin(admin.ModelAdmin):
         "total_price",
         "status",
         "created_at",
+        "is_paid",
     )
     list_filter = ("status", "created_at")
     search_fields = ("client_name", "client_phone", "delivery_address")

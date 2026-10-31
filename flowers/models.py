@@ -115,7 +115,8 @@ class Order(models.Model):
     client_phone = PhoneNumberField("Телефон клиента", region="RU")
     delivery_address = models.TextField("Адрес доставки")
     delivery_time = models.CharField("Время доставки", max_length=100)
-
+    client_email = models.EmailField("E-mail клиента", blank=True, null=True)
+    is_paid = models.BooleanField("Оплачен", default=False)
     promocode = models.ForeignKey(
         PromoCode,
         verbose_name="Примененный промокод",
