@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<section id="orderStep" class="p100">
+    <div class="container">
+        <div class="ficc" style="flex-direction: column; text-align: center; padding: 40px 0;">
+            <h1 class="title">Спасибо за заказ, {{ order.client_name }}!</h1>
+            
+            <p style="font-size: 18px; color: #2D2D2D; margin-bottom: 15px; font-weight: 500;">
+                Номер вашего заказа: <span style="color: #17CF97; font-weight: 700;">#{{ order.id }}</span>
+            </p>
+            
+            <p style="max-width: 500px; font-size: 16px; color: #ABABAB; margin-bottom: 40px; line-height: 145%;">
+                Оплата прошла успешно! Букет «{{ order.bouquet.title }}» уже передан флористу. 
+                Мы доставим его по адресу <span style="color: #2D2D2D;">{{ order.delivery_address }}</span> 
+                в указанное время: <span style="color: #2D2D2D;">{{ order.delivery_time }}</span>.
+            </p>
+            
+            <a href="{% url 'index' %}" class="btn ficc" style="width: 280px; height: 57px; text-decoration: none;">
+                На главную страницу
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}

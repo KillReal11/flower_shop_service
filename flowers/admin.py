@@ -1,8 +1,7 @@
 from django.contrib import admin
 from django.utils.html import mark_safe
 
-from .models import (Bouquet, BudgetInterval, ConsultationRequest, Event,
-                     Order, PromoCode)
+from .models import Bouquet, BudgetInterval, ConsultationRequest, Event, Order, PromoCode
 
 
 @admin.register(Event)
@@ -56,6 +55,7 @@ class OrderAdmin(admin.ModelAdmin):
         "total_price",
         "status",
         "created_at",
+        "is_paid",
     )
     list_filter = ("status", "created_at")
     search_fields = ("client_name", "client_phone", "delivery_address")
