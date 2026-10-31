@@ -653,10 +653,23 @@ height: 825px;*/
     position: relative;
 }
 
-.order__block {
-    height: 775px;
-    display: flex;
-    justify-content: space-between;
+.order:not(.orderStep) {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    gap: 50px !important;
+    height: auto !important;
+}
+
+.order:not(.orderStep) .order__block {
+    flex: 1 !important;
+}
+
+.order:not(.orderStep) > div:last-of-type {
+    width: 100% !important;
+    max-width: 450px !important;
+    flex-shrink: 0 !important;
 }
 
 .order_items {
@@ -746,13 +759,6 @@ input[type=radio]:checked+label {
     color: #fff;
 }
 
-.order__img {
-    position: absolute;
-    width: 511px;
-    right: 0;
-    top: 0;
-    height: 775px;
-}
 
 #orderStep {
     position: relative;
@@ -775,10 +781,7 @@ input[type=radio]:checked+label {
     margin-bottom: 5px;
 }
 
-.orderStep_form .order__form_block {
-    display: flex;
-    justify-content: space-between;
-}
+
 
 .orderStep_form_input {
     height: 50px;
@@ -801,7 +804,38 @@ input[type=radio]:checked+label {
     width: 91px;
 }
 
-.orderStep .order_items {}
+.order.orderStep {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+    align-items: flex-start !important;
+    gap: 50px !important;
+    height: auto !important;
+    margin-top: 50px !important;
+}
+
+/* Левая колонка с картой на шаге оплаты */
+.order.orderStep .order__block {
+    flex: 1 !important;
+}
+
+/* Правая колонка (карточка букета) на шаге оплаты */
+.order.orderStep .result__items {
+    margin-top: 0 !important; /* Полностью обнуляем margin коллег */
+    margin-right: 0 !important;
+    width: 100% !important;
+    max-width: 400px !important;
+    flex-shrink: 0 !important;
+    box-sizing: border-box !important;
+}
+
+.order__img, .order_img, .result__items img {
+    width: 100% !important;
+    max-width: 450px !important;
+    height: 500px !important;
+    object-fit: cover !important;
+    border-radius: 10px !important;
+}
 
 /*consultation.html*/
 #singUpConsultation {
