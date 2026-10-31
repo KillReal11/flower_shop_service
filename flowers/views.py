@@ -34,9 +34,11 @@ def consultation(request):
             if not already_waiting:
                 form.save()
             messages.success(request, "Заявка отправлена! Мы скоро вам перезвоним.")
-            return redirect(f"{reverse('index')}#consultation")
-    else:
-        form = ConsultationRequestForm()
+        else:
+            messages.error(request, "Не удалось отправить заявку. Проверьте номер телефона.")
+        return redirect(f"{reverse('index')}#consultation")
+
+    form = ConsultationRequestForm()
     return render(request, "consultation.html", {"form": form})
 
 

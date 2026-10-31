@@ -68,7 +68,7 @@
             <div class="title consultation__title">Оставьте заявку на консультацию</div>
 
             {% for message in messages %}
-              <p class="consultation__message">{{ message }}</p>
+              <p class="consultation__message consultation__message_{{ message.tags }}">{{ message }}</p>
             {% endfor %}
 
             <form action="{% url 'consultation' %}" method="post" class="consultation__form">
