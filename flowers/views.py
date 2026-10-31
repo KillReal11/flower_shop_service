@@ -1,7 +1,11 @@
+from django.contrib import messages
 from django.shortcuts import get_object_or_404, redirect, render
+from django.urls import reverse
 from django.utils import timezone
 
-from flowers.models import Bouquet, BudgetInterval, Event, Order, PromoCode
+from flowers.models import Bouquet, BudgetInterval, ConsultationRequest, Event, Order, PromoCode
+
+from .forms import ConsultationRequestForm
 
 
 def index(request):
@@ -20,8 +24,22 @@ def catalog(request):
 
 
 def consultation(request):
-    # будущий код
-    return render(request, "consultation.html")
+    if request.method == "POST":
+        form = ConsultationRequestForm(request.POST)
+        if form.is_valid():
+            phone = form.cleaned_data["client_phone"]
+            already_waiting = ConsultationRequest.objects.filter(
+                client_phone=phone, status="new"
+            ).exists()
+            if not already_waiting:
+                form.save()
+            messages.success(request, "Заявка отправлена! Мы скоро вам перезвоним.")
+        else:
+            messages.error(request, "Не удалось отправить заявку. Проверьте номер телефона.")
+        return redirect(f"{reverse('index')}#consultation")
+
+    form = ConsultationRequestForm()
+    return render(request, "consultation.html", {"form": form})
 
 
 def create_order(request, bouquet_id):

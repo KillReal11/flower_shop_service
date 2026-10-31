@@ -288,6 +288,24 @@ height: 825px;*/
     color: #FFFFFF;
 }
 
+.consultation__message {
+    text-align: center;
+    color: #FFFFFF;
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 103.52%;
+    margin-bottom: 19px;
+}
+
+.consultation__message_error {
+    width: fit-content;
+    margin: 0 auto 19px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background: #c75c5c;
+}
+
 .consultation__form {
     width: 655px;
     margin: 0 auto;
