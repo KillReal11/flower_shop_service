@@ -81,3 +81,17 @@ python manage.py runserver
 ruff check .
 ruff format --check .
 ```
+
+## Развёртывание
+
+Проект запускается через [gunicorn](https://gunicorn.org/) за обратным прокси [nginx](https://nginx.org/). Статика раздаётся nginx'ом из `STATIC_ROOT`.
+
+При обновлении кода на сервере:
+
+```
+git pull
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py collectstatic --noinput
+sudo systemctl restart <имя-gunicorn-сервиса>
+```

@@ -154,3 +154,17 @@ class ConsultationRequest(models.Model):
 
     def __str__(self):
         return f"Консультация для {self.client_phone} ({self.get_status_display()})"
+
+
+class Shop(models.Model):
+    address = models.CharField("Адрес магазина", max_length=255)
+    phone = PhoneNumberField("Телефон магазина", region="RU")
+    sort_order = models.PositiveIntegerField("Порядок сортировки", default=0)
+
+    class Meta:
+        verbose_name = "Магазин"
+        verbose_name_plural = "Магазины"
+        ordering = ["sort_order", "id"]
+
+    def __str__(self):
+        return self.address

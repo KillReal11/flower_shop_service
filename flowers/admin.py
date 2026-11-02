@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import mark_safe
 
-from .models import Bouquet, BudgetInterval, ConsultationRequest, Event, Order, PromoCode
+from .models import Bouquet, BudgetInterval, ConsultationRequest, Event, Order, PromoCode, Shop
 
 
 @admin.register(Event)
@@ -72,3 +72,11 @@ class ConsultationRequestAdmin(admin.ModelAdmin):
     list_editable = ("status",)
     ordering = ["-created_at"]
     readonly_fields = ("created_at",)
+
+
+@admin.register(Shop)
+class ShopAdmin(admin.ModelAdmin):
+    list_display = ("address", "phone", "sort_order")
+    list_editable = ("sort_order",)
+    search_fields = ("address", "phone")
+    ordering = ["sort_order", "id"]
