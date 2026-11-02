@@ -194,3 +194,7 @@ ruff format --check .
     python3 manage.py collectstatic --noinput
     systemctl restart <имя-gunicorn-сервиса>
     ```
+
+## Цели проекта
+
+Код написан в образовательных целях на онлайн-курсе по Python и веб-разработке [dvmn.org](https://dvmn.org/).
